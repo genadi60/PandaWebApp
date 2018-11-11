@@ -1,0 +1,109 @@
+﻿@if (User.Role == "Admin")
+{
+    <h1 class="text-center text-panda">Hello, Administrator @User.Username!</h1>
+}
+@else
+{
+    <h1 class="text-center text-panda">Hello, @User.Username!</h1>
+}
+<br />
+<hr class="hr-2 bg-panda" />
+{var pending = Model.Pending;}
+{var shipped = Model.Shipped;}
+{var delivered = Model.Delivered;}
+@if(pending.Count > 0 || shipped.Count > 0 || delivered.Count > 0)
+{
+<div class="container-fluid row d-flex justify-content-around">
+    @if(pending.Count > 0)
+    {
+    <div>
+        <h2 class="text-panda text-center">Pending</h2>
+        <div class="card border-panda">
+            <div class="card-body">
+                @for(var index = 0; index < pending.Count; index++)
+                {
+                {var package = pending[index];}
+                <table>
+                    <tr>
+                        <td class="col-md-8">
+                            <p class="card-text">@package.Description</p>
+                        </td>
+                        <td class="col-md-4"><a href="/packages/details?id=@package.Id" class="btn bg-panda text-white">Details</a></td>
+                    </tr>
+                </table>
+                @if(index < pending.Count - 1)
+                {
+                <br/>
+                }
+                }
+            </div>
+        </div>
+    </div>
+    }
+    @if(shipped.Count > 0)
+    {
+    <div>
+        <h2 class="text-panda text-center">Shipped</h2>
+        <div class="card border-panda">
+            <div class="card-body">
+                @for(var index = 0; index < shipped.Count; index++)
+                {
+                {var package = shipped[index];}
+                <table>
+                    <tr>
+                        <td class="col-md-8">
+                            <p class="card-text">@package.Description</p>
+                        </td>
+                        <td class="col-md-4"><a href="/packages/details?id=@package.Id" class="btn bg-panda text-white">Details</a></td>
+                    </tr>
+                </table>
+                @if(index < shipped.Count - 1)
+                {
+                <br/>
+                }
+                }
+            </div>
+        </div>
+    </div>
+    }
+    @if(delivered.Count > 0)
+    {
+    <div>
+        <h2 class="text-panda text-center">Delivered</h2>
+        <div class="card border-panda">
+            <div class="card-body">
+                @for(var index = 0; index < delivered.Count; index++)
+                {
+                {var package = delivered[index];}
+                <table>
+                    <tr>
+                        <td class="col-md-8">
+                            <p class="card-text">@package.Description</p>
+                        </td>
+                        <td class="col-md-4">
+                            @if(User.Username.Equals(package.Recipient) && package.Status != "Acquired")
+                            {
+                            <form method="post" action="/receipts/index">
+                                <button class="btn bg-panda text-white" type="submit" name="id" value="@package.Id">Acquire</button>
+                            </form>
+                            }
+                            @else
+                            {
+                            <form method="get" action="/packages/details">
+                                <button class="btn bg-panda text-white" type="submit" name="id" value="@package.Id">Details</button>
+                            </form>
+                            }
+                        </td>
+                    </tr>
+                </table>
+                @if(index < delivered.Count - 1)
+                {
+                <br/>
+                }
+                }
+            </div>
+        </div>
+    </div>
+    }
+</div>
+}
