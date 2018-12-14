@@ -7,9 +7,9 @@ namespace PandaWebApp.Services
 {
     public interface IReceiptsService
     {
-        bool Acquire(int id, PandaDbContext context);
+        bool Acquire(string id, PandaDbContext context);
 
-        ReceiptViewModel FindById(int id, PandaDbContext context);
+        ReceiptViewModel FindById(string id, PandaDbContext context);
 
         IList<ReceiptViewModel> FindAll(PandaDbContext context);
 

@@ -9,7 +9,7 @@ namespace PandaWebApp.Services
 {
     public class ReceiptsService : IReceiptsService
     {
-        public bool Acquire(int id, PandaDbContext context)
+        public bool Acquire(string id, PandaDbContext context)
         {
             var package = context.Packages.FirstOrDefault(p => p.Id == id);
 
@@ -25,6 +25,7 @@ namespace PandaWebApp.Services
 
 
             var receipt = new Receipt();
+            receipt.Id = Guid.NewGuid().ToString();
             receipt.Fee = (decimal)(package.Weight * 2.67);
             receipt.Recipient = package.Recipient;
             receipt.Package = package;
@@ -36,7 +37,7 @@ namespace PandaWebApp.Services
             return true;
         }
 
-        public ReceiptViewModel FindById(int id, PandaDbContext context)
+        public ReceiptViewModel FindById(string id, PandaDbContext context)
         {
             var receiptViewModel = context.Receipts
                 .Select(r => new ReceiptViewModel

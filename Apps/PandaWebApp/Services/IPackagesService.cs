@@ -9,7 +9,7 @@ namespace PandaWebApp.Services
     {
         bool CreatePackage(PackageViewModel model, PandaDbContext context);
 
-        PackageViewModel FindById(int id, PandaDbContext context);
+        PackageViewModel FindById(string id, PandaDbContext context);
 
         ICollection<string> GetRecipients(PandaDbContext context);
 
@@ -25,8 +25,8 @@ namespace PandaWebApp.Services
 
         IList<PackageViewModel> UserDelivered(string username, PandaDbContext context);
 
-        bool Ship(int id, PandaDbContext context);
+        bool Ship(string id, PandaDbContext context);
 
-        bool Deliver(int id, PandaDbContext context);
+        bool Deliver(string id, PandaDbContext context);
     }
 }

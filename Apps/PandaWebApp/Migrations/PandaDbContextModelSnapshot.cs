@@ -21,15 +21,14 @@ namespace PandaWebApp.Migrations
 
             modelBuilder.Entity("PandaWebApp.Models.Package", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
                     b.Property<DateTime?>("EstimatedDeliveryDate");
 
-                    b.Property<int?>("RecipientId");
+                    b.Property<string>("RecipientId");
 
                     b.Property<string>("ShippingAddress");
 
@@ -46,17 +45,16 @@ namespace PandaWebApp.Migrations
 
             modelBuilder.Entity("PandaWebApp.Models.Receipt", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<decimal>("Fee");
 
                     b.Property<DateTime>("IssuedOn");
 
-                    b.Property<int?>("PackageId");
+                    b.Property<string>("PackageId");
 
-                    b.Property<int?>("RecipientId");
+                    b.Property<string>("RecipientId");
 
                     b.HasKey("Id");
 
@@ -69,9 +67,8 @@ namespace PandaWebApp.Migrations
 
             modelBuilder.Entity("PandaWebApp.Models.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email");
 

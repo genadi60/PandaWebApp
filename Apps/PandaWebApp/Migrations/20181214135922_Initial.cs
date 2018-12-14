@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PandaWebApp.Migrations
@@ -12,8 +11,7 @@ namespace PandaWebApp.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     Username = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
@@ -28,14 +26,13 @@ namespace PandaWebApp.Migrations
                 name: "Packages",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Weight = table.Column<double>(nullable: false),
                     ShippingAddress = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false),
                     EstimatedDeliveryDate = table.Column<DateTime>(nullable: true),
-                    RecipientId = table.Column<int>(nullable: true)
+                    RecipientId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,12 +49,11 @@ namespace PandaWebApp.Migrations
                 name: "Receipts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     Fee = table.Column<decimal>(nullable: false),
                     IssuedOn = table.Column<DateTime>(nullable: false),
-                    RecipientId = table.Column<int>(nullable: true),
-                    PackageId = table.Column<int>(nullable: true)
+                    RecipientId = table.Column<string>(nullable: true),
+                    PackageId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

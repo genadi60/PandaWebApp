@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using PandaWebApp.Data;
 using PandaWebApp.Models;
 using PandaWebApp.ViewModels;
@@ -62,7 +63,7 @@ namespace PandaWebApp.Services
             }
         }
         
-        public int GetUserId(string username, PandaDbContext context)
+        public string GetUserId(string username, PandaDbContext context)
         {
             using (var db = context)
             {
@@ -87,6 +88,7 @@ namespace PandaWebApp.Services
 
                 var user = new User
                 {
+                    Id = Guid.NewGuid().ToString(),
                     Username = model.Username,
                     Password = _hashService.Hash(model.Password),
                     Email = model.Email,

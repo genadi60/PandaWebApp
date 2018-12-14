@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20181214135045_ConfirmId.cs" />
+    <Compile Remove="Migrations\20181214135045_ConfirmId.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
@@ -21,6 +26,12 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Migrations\20181214135922_Initial.Designer.cs">
+      <DependentUpon>20181214135922_Initial.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

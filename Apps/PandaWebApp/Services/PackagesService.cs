@@ -18,6 +18,7 @@ namespace PandaWebApp.Services
             }
             var package = new Package
             {
+                Id = Guid.NewGuid().ToString(),
                 Description = model.Description,
                 Recipient = context.Users.FirstOrDefault(u => u.Username.Equals(model.Recipient)),
                 Weight = model.Weight,
@@ -32,7 +33,7 @@ namespace PandaWebApp.Services
             return true;
         }
 
-        public PackageViewModel FindById(int id, PandaDbContext context)
+        public PackageViewModel FindById(string id, PandaDbContext context)
         {
             var packageViewModel = context.Packages
                 .Select(p => new PackageViewModel
@@ -221,7 +222,7 @@ namespace PandaWebApp.Services
             return deliveredPackages;
         }
 
-        public bool Ship(int id, PandaDbContext context)
+        public bool Ship(string id, PandaDbContext context)
         {
             var package = context.Packages.FirstOrDefault(p => p.Id == id);
 
@@ -241,7 +242,7 @@ namespace PandaWebApp.Services
             return true;
         }
 
-        public bool Deliver(int id, PandaDbContext context)
+        public bool Deliver(string id, PandaDbContext context)
         {
             var package = context.Packages.FirstOrDefault(p => p.Id == id);
 

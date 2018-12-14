@@ -97,7 +97,7 @@ namespace PandaWebApp.Controllers
             return View("/delivered-packages", userViewModel);
         }
 
-        public IHttpResponse Details(int id)
+        public IHttpResponse Details(string id)
         {
             if (!User.IsLoggedIn)
             {
@@ -126,7 +126,7 @@ namespace PandaWebApp.Controllers
             return View("/details-package", model);
         }
 
-        public IHttpResponse Ship(int id)
+        public IHttpResponse Ship(string id)
         {
             if (User.Role != Role.Admin.ToString())
             {
@@ -143,7 +143,7 @@ namespace PandaWebApp.Controllers
             return View("/home/loggedInUser", model);
         }
 
-        public IHttpResponse Deliver(int id)
+        public IHttpResponse Deliver(string id)
         {
             if (User.Role != Role.Admin.ToString())
             {

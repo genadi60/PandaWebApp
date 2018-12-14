@@ -7,7 +7,7 @@ namespace PandaWebApp.ViewModels
 {
     public class ReceiptViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public decimal Fee { get; set; }
 

@@ -42,7 +42,7 @@ namespace PandaWebApp.Controllers
         }
 
         [HttpPost]
-        public IHttpResponse Index(int id)
+        public IHttpResponse Index(string id)
         {
             if (!User.IsLoggedIn)
             {
@@ -67,7 +67,7 @@ namespace PandaWebApp.Controllers
             return View("/home/loggedInUser", userViewModel);
         }
 
-        public IHttpResponse Details(int id)
+        public IHttpResponse Details(string id)
         {
             if (!User.IsLoggedIn)
             {

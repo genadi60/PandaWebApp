@@ -17,6 +17,6 @@ namespace PandaWebApp.Services
 
         UserViewModel Profile(string username,  PandaDbContext context);
 
-        int GetUserId(string username,  PandaDbContext context);
+        string GetUserId(string username,  PandaDbContext context);
     }
 }
